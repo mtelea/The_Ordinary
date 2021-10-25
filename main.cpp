@@ -1,5 +1,4 @@
 #include <iostream>
-#include<cstring>
 #include<vector>
 
 using namespace std;
@@ -14,27 +13,15 @@ class SPF{
 
 public:
     //Constructor fara parametri
-    SPF(){
-        brand = "No name";
-        cod_produs=0;
-        tip_ten="Oarecare";
-        factor_protectie=stoc=0;
-        cantitate=pret=0;
-    }
+    SPF() : brand("Anonim"),cod_produs(0),tip_ten("Oarecare"),factor_protectie(0),cantitate(0),pret(0),stoc(0){}
 
-    // Consturctor cu parametri
-    SPF(const string& br,const int cod,const string& tt,const int fp,const float ct,const float p,const int s){
-        brand = br;
-        cod_produs=cod;
-        tip_ten = tt;
-        factor_protectie=fp;
-        cantitate=ct;
-        pret=p;
-        stoc=s;
+    // Constructor cu parametri
+    SPF(const string& br,int cod,const string& tt, int fp,float ct,float p,int s) :
+        brand(br),cod_produs(cod),tip_ten(tt),factor_protectie(fp),cantitate(ct),pret(p),stoc(s){
     }
 
     //Constructor de copiere
-    SPF(const SPF& s){
+    SPF(const SPF &s){
         this->brand = s.brand;
         this->cod_produs=s.cod_produs;
         this->tip_ten = s.tip_ten;
@@ -46,7 +33,7 @@ public:
 
     ~SPF()
     {
-        cout<<"S-a apelat destructorul\n";
+       // cout<<"S-a apelat destructorul\n";
     }
 
     friend ostream& operator<<(ostream& iesire,const SPF &s){
@@ -76,7 +63,7 @@ public:
         cout<<"Numarul de produse ramase in stoc este de: "<<this->stoc<<" SPF-uri"<<endl;
     }
 
-    const float getPret() const{
+     float getPret() const{
         return this->pret;
     }
 
@@ -98,7 +85,7 @@ public:
     }
 
     //constructor de initializare cu parametri
-    CleansingGel(const string& br, const int cod,const string& tt,const float ct,const float p){
+    CleansingGel(const string& br,int cod,const string& tt, float ct, float p){
         brand = br;
         cod_produs = cod;
         tip_ten=tt;
@@ -131,7 +118,7 @@ public:
         cout<<"Noul pret este: "<<this->pret<<endl;
     }
 
-    const float getPret() const{
+    float getPret() const{
         return this->pret;
     }
 };
@@ -143,24 +130,18 @@ private:
     string nume, adresa;
 
 public:
-    Market(vector<SPF> &spf,vector<CleansingGel> cg,const string &n,const string &adr){
-        for(int i=0;i<spf.size();i++)
-            spf_list.at(i) = spf.at(i);
-        for(int i=0;i<cg.size();i++)
-            cg_list.at(i) = cg.at(i);
-        nume = n;
-        adresa = adr;
-    }
+    Market(const vector<SPF> &spfList, const vector<CleansingGel> &cgList, const string &nume, const string &adresa)
+            : spf_list(spfList), cg_list(cgList), nume(nume), adresa(adresa) {}
 
-    void add_spf(SPF &s){
-        spf_list.push_back(s);
+    void add_spf(SPF &spf){
+        spf_list.push_back(spf);
     }
 
     void add_cleansing(CleansingGel &cg){
         cg_list.push_back(cg);
     }
 
-    const string getNume(){
+    string getNume() const{
         return this->nume;
     }
 
@@ -168,7 +149,7 @@ public:
         this->nume = nume;
     }
 
-    const string getAdresa() {
+    string getAdresa() const{
         return this->adresa;
     }
 
@@ -213,12 +194,15 @@ public:
 
 int main()
 {
-    SPF s1;//constructor init fara parametri
+    SPF s1;
+    cout<<s1;
     SPF s2("Altruist",001,"mixt",50,200,35.4,60); //constructor init cu parametri
     SPF s3(s2); //constructor de copiere
     cout<<s2; //operatorul <<
     s2.pret_nou(50); //pretul dupa marire
     s2.actualizare_stoc(2); // stoc actulizat
+    SPF s4;
+    s4 = s2;
 
     CleansingGel g1;
     cout<<g1;
@@ -240,6 +224,9 @@ int main()
     m.sum_total_spf();
     m.stoc_cleansing();
     m.stoc_spf();
+    Market m2{{s2,s3},{g2,g3},
+             "Geek and Gorgeous","Bucuresti"};
+     cout<<m2;
 
     return 0;
 }
