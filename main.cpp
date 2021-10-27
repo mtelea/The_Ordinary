@@ -67,6 +67,14 @@ public:
         return this->pret;
     }
 
+     string getBrand() const{
+        return this->brand;
+    }
+
+     float getCantitate() const{
+        return this->cantitate;
+    }
+
 };
 
 class CleansingGel{
@@ -121,6 +129,14 @@ public:
     float getPret() const{
         return this->pret;
     }
+
+    string getBrand() const{
+        return this->brand;
+    }
+
+    float getCantitate() const{
+        return this->cantitate;
+    }
 };
 
 class Market{
@@ -174,14 +190,14 @@ public:
 
     void sum_total_spf(){
         float suma=0;
-        for(int i=0; i<this->spf_list.size();i++)
+        for(unsigned i=0; i<this->spf_list.size();i++)
             suma+= this->spf_list.at(i).getPret();
         cout<<"Pretul total pt stocul de spf este "<<suma<<endl;
     }
 
     void sum_total_cg(){
         float suma=0;
-        for(int i=0; i<this->cg_list.size();i++)
+        for(unsigned i=0; i<this->cg_list.size();i++)
             suma+= this->cg_list.at(i).getPret();
         cout<<"Pretul total pt stocul de spf este "<<suma<<endl;
     }
@@ -189,6 +205,85 @@ public:
     friend ostream& operator<<(ostream& iesire,const Market& m){
         iesire<<"Magazinul "<<m.nume<<" se afla la adresa "<<m.adresa<<endl;
         return iesire;
+    }
+
+};
+
+
+class Comanda{
+    int id_comanda;
+    vector<SPF>spf_comandat;
+    vector<CleansingGel>cg_comandat;
+    float pret;
+    string data_comanda;
+
+public:
+    Comanda(int idComanda, const vector<SPF> &spfComandat, const vector<CleansingGel> &cgComandat,
+            const string &dataComanda) : id_comanda(idComanda), spf_comandat(spfComandat),
+            cg_comandat(cgComandat),data_comanda(dataComanda) {}
+
+    void total_comanda(){
+        float total=0;
+        for(unsigned i=0; i<this->spf_comandat.size();i++)
+            total += this->spf_comandat.at(i).getPret();
+        for(unsigned i=0; i<this->cg_comandat.size();i++)
+            total += this->cg_comandat.at(i).getPret();
+        cout<<"total: "<<total<<endl;
+    }
+
+    int getID_comanda()const{
+        return this->id_comanda;
+    }
+
+    float getPret()const{
+        return this->pret;
+    }
+
+    string getData()const{
+        return this->data_comanda;
+    }
+
+    vector<SPF> getSPF_comandat()const{
+        return this->spf_comandat;
+    }
+
+    vector<CleansingGel> getCG_comandat()const{
+        return this->cg_comandat;
+    }
+};
+
+class Client{
+    string nume;
+    int id_client;
+    string adresa;
+    vector<Comanda> istoric_comenzi;
+
+public:
+    Client(const string &nume, int idClient, const string &adresa, const vector<Comanda> &istoricComenzi) :
+    nume(nume),id_client(idClient),adresa(adresa),istoric_comenzi(istoricComenzi) {}
+
+    friend ostream& operator<<(ostream& out,Client &c){
+        out<<"Clientul "<<c.nume<<" cu id-ul "<<c.id_client<<" cu adresa "<<c.adresa<<" are urmatorul istoric de comenzi:"<<endl;
+        for(unsigned i=0;i<c.istoric_comenzi.size();i++) {
+            vector<SPF> aux_spf;
+            aux_spf = c.istoric_comenzi.at(i).getSPF_comandat();
+            vector<CleansingGel> aux_cg;
+            aux_cg = c.istoric_comenzi.at(i).getCG_comandat();
+            {
+                for (unsigned j = 0; j < aux_spf.size(); j++) {
+                    out << "SPF: " << aux_spf.at(j).getBrand() << " " << aux_spf.at(j).getCantitate() << " ml";
+                }
+            }
+
+            {
+                for (unsigned k = 0; k < aux_cg.size(); k++) {
+                    out << "Cleansing Gel: " << aux_cg.at(k).getBrand() << " " << aux_cg.at(k).getCantitate() << " ml";
+                }
+            }
+
+            out<<endl;
+        }
+    return out;
     }
 
 };
@@ -228,7 +323,14 @@ int main()
     m.stoc_spf();
     Market m2{{s2,s3},{g2,g3},
              "Geek and Gorgeous","Bucuresti"};
-     cout<<m2;
+
+    Comanda com{105522,{s2},{g2,g4},"10-Oct-2020" };
+    com.total_comanda();
+    Client c1{"Popescu",111,"Sibiu",{com}};
+    cout<<c1;
+
+
+
 
     return 0;
 }
