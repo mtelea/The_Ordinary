@@ -247,9 +247,7 @@ public:
         return this->spf_comandat;
     }
 
-    vector<CleansingGel> getCG_comandat()const{
-        return this->cg_comandat;
-    }
+
 };
 
 class Client{
