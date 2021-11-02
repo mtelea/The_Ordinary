@@ -2,8 +2,8 @@
 #include "SPF.h"
 #include "CleasingGel.h"
 
-Comanda::Comanda(int idComanda, const vector<SPF> &spfComandat, const vector<CleansingGel> &cgComandat,
-                 const string &dataComanda) : id_comanda(idComanda), spf_comandat(spfComandat),
+Comanda::Comanda(int idComanda, const std::vector<SPF> &spfComandat, const std::vector<CleansingGel> &cgComandat,
+                 const std::string &dataComanda) : id_comanda(idComanda), spf_comandat(spfComandat),
                                               cg_comandat(cgComandat),data_comanda(dataComanda) {}
 
 void Comanda::total_comanda(){

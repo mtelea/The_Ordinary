@@ -6,23 +6,23 @@
 #include<iostream>
 
 class SPF {
-    string brand;
+    std::string brand;
     int cod_produs;
-    string tip_ten;
+    std::string tip_ten;
     int factor_protectie;
     float cantitate, pret;
     int stoc;
 public:
     SPF();
-    SPF(const string& br,int cod,const string& tt, int fp,float ct,float p,int s);
+    SPF(const std::string& br,int cod,const std::string& tt, int fp,float ct,float p,int s);
     SPF(const SPF &s);
     ~SPF();
-    friend ostream& operator<<(ostream& iesire,const SPF &s);
+    friend std::ostream& operator<<(std::ostream& iesire,const SPF &s);
     SPF& operator=(const SPF &s);
     void pret_nou(float procent_marire);
     void actualizare_stoc(int nr_prod_comandate);
     float getPret() const;
-    string getBrand() const;
+    std::string getBrand() const;
     float getCantitate() const;
 };
 

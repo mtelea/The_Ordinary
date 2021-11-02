@@ -146,8 +146,6 @@ private:
     string nume, adresa;
 
 public:
-
-
     Market(const vector<SPF> &spfList, const vector<CleansingGel> &cgList, const string &nume, const string &adresa)
             : spf_list(spfList), cg_list(cgList), nume(nume), adresa(adresa) {}
 
@@ -287,7 +285,6 @@ public:
         }
     return out;
     }
-
 };
 
 
