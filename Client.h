@@ -3,16 +3,17 @@
 
 #include<vector>
 #include<iostream>
+#include<memory>
 #include "Comanda.h"
 
 class Client {
     std::string nume;
     int id_client;
     std::string adresa;
-    std::vector<Comanda> istoric_comenzi;
+    const std::vector <std::shared_ptr <Comanda>> istoric_comenzi;
 
 public:
-    Client(const std::string &nume, int idClient, const std::string &adresa, const std::vector<Comanda> &istoricComenzi);
+    Client(const std::string &nume, int idClient, const std::string &adresa, const std::vector <std::shared_ptr <Comanda>> &istoricComenzi);
     friend std::ostream& operator<<(std::ostream& out,Client &c);
 };
 

@@ -1,36 +1,40 @@
 #include "Comanda.h"
-#include "SPF.h"
-#include "CleasingGel.h"
 
-Comanda::Comanda(int idComanda, const std::vector<SPF> &spfComandat, const std::vector<CleansingGel> &cgComandat,
-                 const std::string &dataComanda) : id_comanda(idComanda), spf_comandat(spfComandat),
-                                              cg_comandat(cgComandat),data_comanda(dataComanda) {}
+Comanda::Comanda(int idComanda, std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret, const std::string &dataComanda) :
+id_comanda(idComanda),prod_comandate(prod_comandate), pret(pret),data_comanda(dataComanda) {}
 
 void Comanda::total_comanda(){
-    float total=0;
-    for(unsigned i=0; i<this->spf_comandat.size();i++)
-        total += this->spf_comandat.at(i).getPret();
-    for(unsigned i=0; i<this->cg_comandat.size();i++)
-        total += this->cg_comandat.at(i).getPret();
-    std::cout<<"total: "<<total<<std::endl;
+    double total=0;
+    for (int i; i<prod_comandate.size();i++)
+        total += prod_comandate.at(i)->getPret();
+    this->pret = total;
 }
 
 int Comanda::getID_comanda()const{
     return this->id_comanda;
 }
 
-float Comanda::getPret()const{
+double Comanda::getPret()const{
     return this->pret;
+}
+
+void Comanda::addProdus(std::shared_ptr<Produs> prod) {
+    prod_comandate.push_back(prod);
 }
 
 std::string Comanda::getData()const{
     return this->data_comanda;
 }
 
-std::vector<SPF> Comanda:: getSPF_comandat()const{
-    return this->spf_comandat;
+std::vector<std::shared_ptr<Produs>> Comanda:: getProdComandate()const {
+    return this->prod_comandate;
 }
 
-std::vector<CleansingGel> Comanda:: getCG_comandat()const{
-    return this->cg_comandat;
+std::string Comanda::getBrand(std::shared_ptr<Produs> prod) const{
+    return prod->getBrand();
 }
+
+std::vector<std::shared_ptr<Produs>> Comanda::getVProduse()const{
+    return this->prod_comandate;
+}
+

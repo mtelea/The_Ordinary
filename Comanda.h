@@ -3,25 +3,26 @@
 
 #include<vector>
 #include<iostream>
-#include "SPF.h"
-#include "CleasingGel.h"
+#include "Produs.h"
 
 class Comanda {
     int id_comanda;
-    std::vector<SPF>spf_comandat;
-    std::vector<CleansingGel>cg_comandat;
-    float pret;
+    std::vector<std::shared_ptr<Produs>> prod_comandate;
+    double pret;
     std::string data_comanda;
 
 public:
-    Comanda(int idComanda, const std::vector <SPF> &spfComandat, const std::vector <CleansingGel> &cgComandat,
-            const std::string &dataComanda);
+    Comanda(int idComanda,std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret,const std::string &dataComanda);
+    //const std::vector<Produs> &lista_comandate;
     void total_comanda();
     int getID_comanda()const;
-    float getPret()const;
+    double getPret()const;
+    std::string getBrand(std::shared_ptr<Produs> prod) const;
     std::string getData()const;
-    std::vector<SPF> getSPF_comandat()const;
-    std::vector<CleansingGel> getCG_comandat()const;
+    void addProdus(std::shared_ptr<Produs>);
+    std::vector<std::shared_ptr<Produs>> getProdComandate() const;
+    std::vector<std::shared_ptr<Produs>> getVProduse() const;
+
 };
 
 

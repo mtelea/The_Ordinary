@@ -1,26 +1,18 @@
 #include "CleasingGel.h"
+#include "Produs.h"
 
-CleansingGel::CleansingGel(){
-    brand = "No name";
-    cod_produs=0;
-    tip_ten="Oarecare";
-    cantitate=pret=0;
-}
+CleansingGel::CleansingGel(const std::string &brand, int codProdus, const std::string &tipTen,
+                           float cantitate,float pret, int stoc, int concentratieHa) : Produs(brand, codProdus, tipTen,
+                                                                                   cantitate,pret, stoc),
+                                                                            concentratie_HA(concentratieHa) {}
 
-CleansingGel::CleansingGel(const std::string& br,int cod,const std::string& tt, float ct, float p){
-    brand = br;
-    cod_produs = cod;
-    tip_ten=tt;
-    cantitate=ct;
-    pret=p;
-}
-
-CleansingGel::CleansingGel(const CleansingGel &g){
+CleansingGel::CleansingGel(const CleansingGel &g) : Produs (g){
     this->brand = g.brand;
     this->cod_produs = g.cod_produs;
     this->tip_ten = g.tip_ten;
     this->cantitate = g.cantitate;
     this->pret = g.pret;
+    this->concentratie_HA=g.concentratie_HA;
 }
 
 std::ostream& operator<<(std::ostream& iesire,const CleansingGel& g){
@@ -28,24 +20,33 @@ std::ostream& operator<<(std::ostream& iesire,const CleansingGel& g){
     return iesire;
 }
 
-void CleansingGel::pret_redus(float procent_reducere){
-    this->pret = this->pret - (procent_reducere/100)*this->pret;
-    std::cout<<"Pretul dupa reducere este "<<this->pret<<std::endl;
-}
+float CleansingGel::getCantitate() const{
+    return this->cantitate;}
 
-void CleansingGel:: pret_majorat(float procent_marire){
-    this->pret = this->pret + (procent_marire/100)* this->pret;
-    std::cout<<"Noul pret este: "<<this->pret<<std::endl;
-}
-
-float CleansingGel::getPret() const{
+double CleansingGel::getPret() const{
     return this->pret;
 }
 
-std::string CleansingGel::getBrand() const{
+double CleansingGel::Reducere (){
+    if (this->stoc<20)  return (this->pret - (this->pret*0.10));
+    if(this->stoc<10) return (this->pret - (this->pret* 0.25));
+    return this->pret;
+}
+
+void CleansingGel::set_new_pret(){
+    this->pret = this->Reducere();
+}
+
+std::string CleansingGel::getBrand() const {
     return this->brand;
 }
 
-float CleansingGel::getCantitate() const{
-    return this->cantitate;
+std::shared_ptr <Produs> CleansingGel::clone() const {
+    return std::make_shared <CleansingGel>(*this);
 }
+
+
+
+
+
+

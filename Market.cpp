@@ -2,15 +2,10 @@
 #include "CleasingGel.h"
 #include "SPF.h"
 
-Market::Market(const std::vector<SPF> &spfList, const std::vector<CleansingGel> &cgList, const std::string &nume, const std::string &adresa)
-        : spf_list(spfList), cg_list(cgList), nume(nume), adresa(adresa) {}
+Market::Market(const std::vector <std::shared_ptr <Produs>> &produse, const std::string &nume, const std::string &adresa) : produse(produse), nume(nume), adresa(adresa){}
 
-void Market::add_spf(SPF &spf){
-    spf_list.push_back(spf);
-}
-
-void Market::add_cleansing(CleansingGel &cg){
-    cg_list.push_back(cg);
+void Market::add_produs(const std::shared_ptr <Produs> &prod) {
+    produse.push_back(prod);
 }
 
 std::string Market::getNume() const{
@@ -34,26 +29,11 @@ Market::Market(const std::string &nume, const std::string &adresa) {
     this->adresa = adresa;
 }
 
-void Market::stoc_spf(){
-    std::cout<<"Pe stoc se afla "<<this->spf_list.size()<<" lotiuni cu spf"<<std::endl;
-}
-
-void Market::stoc_cleansing(){
-    std::cout<<"Pe stoc se afla "<<this->cg_list.size()<<" geluri de curatare"<<std::endl;
-}
-
-void Market::sum_total_spf(){
-    float suma=0;
-    for(unsigned i=0; i<this->spf_list.size();i++)
-        suma+= this->spf_list.at(i).getPret();
-    std::cout<<"Pretul total pt stocul de spf este "<<suma<<std::endl;
-}
-
-void Market::sum_total_cg(){
-    float suma=0;
-    for(unsigned i=0; i<this->cg_list.size();i++)
-        suma+= this->cg_list.at(i).getPret();
-    std::cout<<"Pretul total pt stocul de spf este "<<suma<<std::endl;
+void Market::pret_total(){
+    float pret=0;
+    for(const auto &prod : produse)
+        pret += prod->getPret();
+    std::cout<<"Pretul total este :"<<pret<<" lei";
 }
 
 std::ostream& operator<<(std::ostream& iesire,const Market& m){

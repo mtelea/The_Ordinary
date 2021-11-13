@@ -4,27 +4,27 @@
 #include<string>
 #include<vector>
 #include<iostream>
+#include<memory>
+#include "Produs.h"
 
-class SPF {
-    std::string brand;
-    int cod_produs;
-    std::string tip_ten;
+class SPF : public Produs {
+protected:
     int factor_protectie;
-    float cantitate, pret;
-    int stoc;
 public:
-    SPF();
-    SPF(const std::string& br,int cod,const std::string& tt, int fp,float ct,float p,int s);
+    SPF(const std::string &brand, int codProdus, const std::string &tipTen, float cantitate,
+        float pret, int stoc, int factorProtectie);
+
     SPF(const SPF &s);
+
     ~SPF();
     friend std::ostream& operator<<(std::ostream& iesire,const SPF &s);
     SPF& operator=(const SPF &s);
-    void pret_nou(float procent_marire);
-    void actualizare_stoc(int nr_prod_comandate);
-    float getPret() const;
-    std::string getBrand() const;
-    float getCantitate() const;
-};
+    double Reducere () override;
+    double getPret() const override;
+    std::string getBrand() const override;
+    void set_new_pret() override;
+    std::shared_ptr <Produs> clone() const override;
 
+};
 
 #endif //MAIN_CPP_SPF_H
