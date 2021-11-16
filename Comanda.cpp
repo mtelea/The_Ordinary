@@ -7,7 +7,7 @@ id_comanda(idComanda),prod_comandate(prod_comandate),pret(pret),data_comanda(dat
 
 void Comanda::total_comanda(){
     double total=0;
-    for (int i; i<prod_comandate.size();i++)
+    for (unsigned i=0; i<prod_comandate.size();i++)
         total += prod_comandate.at(i)->getPret();
     this->pret = total;
 }
