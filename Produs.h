@@ -22,7 +22,6 @@ public:
     virtual std::string getBrand() const = 0;
     virtual std::shared_ptr <Produs> clone() const = 0;
 
-
 };
 
 

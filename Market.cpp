@@ -33,7 +33,7 @@ void Market::pret_total(){
     float pret=0;
     for(const auto &prod : produse)
         pret += prod->getPret();
-    std::cout<<"Pretul total este :"<<pret<<" lei";
+    std::cout<<"Pretul total este :"<<pret<<" lei"<<std::endl;
 }
 
 std::ostream& operator<<(std::ostream& iesire,const Market& m){

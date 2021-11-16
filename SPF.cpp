@@ -40,7 +40,7 @@ double SPF::Reducere () {
 }
 
 double SPF::getPret() const {
-    return this->getPret();
+    return this->pret;
 }
 
 void SPF::set_new_pret(){

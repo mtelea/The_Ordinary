@@ -1,7 +1,9 @@
 #include "Comanda.h"
 
 Comanda::Comanda(int idComanda, std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret, const std::string &dataComanda) :
-id_comanda(idComanda),prod_comandate(prod_comandate), pret(pret),data_comanda(dataComanda) {}
+id_comanda(idComanda),prod_comandate(prod_comandate),pret(pret),data_comanda(dataComanda) {
+    pret =0;
+}
 
 void Comanda::total_comanda(){
     double total=0;
@@ -36,5 +38,9 @@ std::string Comanda::getBrand(std::shared_ptr<Produs> prod) const{
 
 std::vector<std::shared_ptr<Produs>> Comanda::getVProduse()const{
     return this->prod_comandate;
+}
+
+std::shared_ptr <Comanda> Comanda::clone() const {
+    return std::make_shared <Comanda>(*this);
 }
 

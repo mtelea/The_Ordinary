@@ -11,7 +11,8 @@ std::ostream& operator<<(std::ostream& out,Client &c){
     for(unsigned i=0;i<c.istoric_comenzi.size();i++) {
         std::vector <std::shared_ptr <Produs>> aux = c.istoric_comenzi.at(i)->getVProduse();
         for(unsigned j=0;j<aux.size();j++){
-            out<<"Produs "<<j<<" : "<<aux.at(i)->getBrand()<<" "<<aux.at(i)->getPret()<<" lei";
+            out<<"Produs "<<j<<" : "<<aux.at(j)->getBrand()<<" "<<aux.at(j)->getPret()<<" lei";
+            out<<std::endl;
         }
         out<<std::endl;
     }
