@@ -40,7 +40,5 @@ std::vector<std::shared_ptr<Produs>> Comanda::getVProduse()const{
     return this->prod_comandate;
 }
 
-std::shared_ptr <Comanda> Comanda::clone() const {
-    return std::make_shared <Comanda>(*this);
-}
+
 

@@ -22,7 +22,6 @@ public:
     void addProdus(std::shared_ptr<Produs>);
     std::vector<std::shared_ptr<Produs>> getProdComandate() const;
     std::vector<std::shared_ptr<Produs>> getVProduse() const;
-    std::shared_ptr <Comanda> clone() const;
 
 };
 
