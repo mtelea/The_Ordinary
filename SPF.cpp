@@ -1,8 +1,8 @@
 #include "SPF.h"
 #include "Produs.h"
 
-SPF::SPF(const std::string &brand, int codProdus, const std::string &tipTen, float cantitate, float pret, int stoc,
-         int factorProtectie) : Produs(brand, codProdus, tipTen, cantitate, pret, stoc),
+SPF::SPF(const std::string &brand, const std::string &tipTen, float cantitate, float pret, int stoc,
+         int factorProtectie) : Produs(brand, tipTen, cantitate, pret, stoc),
                                 factor_protectie(factorProtectie) {}
 
 SPF::SPF(const SPF &s) : Produs(s){
@@ -11,6 +11,9 @@ SPF::SPF(const SPF &s) : Produs(s){
     this->tip_ten = s.tip_ten;
     this->factor_protectie=s.factor_protectie;
     this->cantitate=s.cantitate;
+//    try {if (s.pret<50) this->pret = s.pret;
+//         else throw 20;}
+//    catch (int e) {std::cout<<"Nu i bun pretu'";}
     this->pret=s.pret;
 }
 
@@ -41,6 +44,10 @@ double SPF::Reducere () {
 
 double SPF::getPret() const {
     return this->pret;
+}
+
+int SPF::getCod() const {
+    return this->cod_produs;
 }
 
 void SPF::set_new_pret(){

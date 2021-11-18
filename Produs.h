@@ -13,8 +13,9 @@ protected:
     float cantitate;
     double pret;
     int stoc;
+    static int cod_max;
 public:
-    Produs(const std::string &brand, int codProdus, const std::string &tipTen, float cantitate, float pret,int stoc);
+    Produs(const std::string &brand, const std::string &tipTen, float cantitate, float pret,int stoc);
     virtual double getPret() const = 0;
     virtual ~Produs();
     virtual double Reducere() = 0;

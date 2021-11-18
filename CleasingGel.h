@@ -11,7 +11,7 @@ class CleansingGel: public Produs {
 protected:
     int concentratie_HA;
 public:
-    CleansingGel(const std::string &brand, int codProdus, const std::string &tipTen,
+    CleansingGel(const std::string &brand,const std::string &tipTen,
                  float cantitate,float pret, int stoc, int concentratieHa);
 
     CleansingGel(const CleansingGel &g);

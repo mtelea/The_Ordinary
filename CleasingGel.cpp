@@ -1,8 +1,8 @@
 #include "CleasingGel.h"
 #include "Produs.h"
 
-CleansingGel::CleansingGel(const std::string &brand, int codProdus, const std::string &tipTen,
-                           float cantitate,float pret, int stoc, int concentratieHa) : Produs(brand, codProdus, tipTen,
+CleansingGel::CleansingGel(const std::string &brand, const std::string &tipTen,
+                           float cantitate,float pret, int stoc, int concentratieHa) : Produs(brand, tipTen,
                                                                                    cantitate,pret, stoc),
                                                                             concentratie_HA(concentratieHa) {}
 

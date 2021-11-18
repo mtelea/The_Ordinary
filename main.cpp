@@ -4,7 +4,6 @@
 #include "CleasingGel.h"
 #include "Comanda.h"
 #include "Client.h"
-#include "Produs.h"
 #include<memory>
 
 
@@ -12,11 +11,11 @@
 int main()
 {
 
-    SPF s1("Garnier",111,"mixt",200,50,40,50);//constructor init cu parametri
-    SPF s2("Altruist",112,"gras",60,75.5,30,30);
-    SPF s3("Istree",113,"uscat",150,47.9,15,30);
-    SPF s4("Synergy",114,"oricare",100,80.3,20,50);
-    SPF s5("Ivatherm",115,"uscat",70,88.99,60,50);
+    SPF s1("Garnier","mixt",200,50,40,50);//constructor init cu parametri
+    SPF s2("Altruist","gras",60,75.5,30,30);
+    SPF s3("Istree","uscat",150,47.9,15,30);
+    SPF s4("Synergy","oricare",100,80.3,20,50);
+    SPF s5("Ivatherm","uscat",70,88.99,60,50);
     SPF s6(s4); //constructor de copiere
     std::cout<<s2; //operatorul <<
     std::cout<<s6;
@@ -24,11 +23,11 @@ int main()
     s3.set_new_pret();
     std::cout<<s3;
 
-    CleansingGel g1("Bioderma",222,"gras",200,62,19,0);
-    CleansingGel g2("Cerave",223,"uscat",150,45,50,2);
-    CleansingGel g3("La Roche Possay",224,"mixt",100,70,12,3);
-    CleansingGel g4("Avene",225,"oricare",120,80.5,32,1);
-    CleansingGel g5("Neutrogena", 226,"mixt",130,25,10,0);
+    CleansingGel g1("Bioderma","gras",200,62,19,0);
+    CleansingGel g2("Cerave","uscat",150,45,50,2);
+    CleansingGel g3("La Roche Possay","mixt",100,70,12,3);
+    CleansingGel g4("Avene","oricare",120,80.5,32,1);
+    CleansingGel g5("Neutrogena","mixt",130,25,10,0);
     CleansingGel g6(g3);
     std::cout<<g6;
 
