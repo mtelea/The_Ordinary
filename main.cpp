@@ -4,12 +4,24 @@
 #include "CleasingGel.h"
 #include "Comanda.h"
 #include "Client.h"
+#include "exceptii.h"
 #include<memory>
 
-
+using namespace std::string_literals;
 
 int main()
 {
+    try{
+        SPF s0("Bioderma","gras",0,0,20,30);
+    }
+
+    catch(EroareProdus &eroare){
+        std::cout<<eroare.what()<<" ";
+    }
+
+    catch(std::exception &eroare){
+        std::cout<<eroare.what()<<" "<<std::endl;
+    }
 
     SPF s1("Garnier","mixt",200,50,40,50);//constructor init cu parametri
     SPF s2("Altruist","gras",60,75.5,30,30);
