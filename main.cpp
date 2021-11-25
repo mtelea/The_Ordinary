@@ -19,8 +19,8 @@ int main()
         std::cout<<eroare.what()<<" ";
     }
 
-    catch(std::exception &eroare){
-        std::cout<<eroare.what()<<" "<<std::endl;
+    catch(std::exception &e){
+        std::cout<<e.what()<<" "<<std::endl;
     }
 
     SPF s1("Garnier","mixt",200,50,40,50);//constructor init cu parametri

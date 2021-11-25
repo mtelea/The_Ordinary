@@ -4,6 +4,7 @@
 #include<iostream>
 #include<vector>
 #include<memory>
+#include "exceptii.h"
 
 class Produs {
 protected:
