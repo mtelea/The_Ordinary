@@ -21,10 +21,7 @@ public:
     friend std::ostream& operator<<(std::ostream& iesire,const SPF &s);
     SPF& operator=(const SPF &s);
     double Reducere () override;
-    double getPret() const override;
     int getCod() const ;
-    std::string getBrand() const override;
-    int getStoc() const override;
     void set_new_pret() override;
     std::shared_ptr <Produs> clone() const override;
 

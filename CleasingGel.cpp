@@ -20,12 +20,6 @@ std::ostream& operator<<(std::ostream& iesire,const CleansingGel& g){
     return iesire;
 }
 
-float CleansingGel::getCantitate() const{
-    return this->cantitate;}
-
-double CleansingGel::getPret() const{
-    return this->pret;
-}
 
 double CleansingGel::Reducere (){
     if (this->stoc<20)  return (this->pret - (this->pret*0.10));
@@ -33,17 +27,11 @@ double CleansingGel::Reducere (){
     return this->pret;
 }
 
-int CleansingGel::getStoc() const {
-    return this->stoc;
-}
 
 void CleansingGel::set_new_pret(){
     this->pret = this->Reducere();
 }
 
-std::string CleansingGel::getBrand() const {
-    return this->brand;
-}
 
 std::shared_ptr <Produs> CleansingGel::clone() const {
     return std::make_shared <CleansingGel>(*this);

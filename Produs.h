@@ -17,12 +17,14 @@ protected:
     static int cod_max;
 public:
     Produs(const std::string &brand, const std::string &tipTen, float cantitate, float pret,int stoc);
-    virtual double getPret() const = 0;
+    Produs &operator=(const Produs &p);
     virtual ~Produs();
     virtual double Reducere() = 0;
     virtual void set_new_pret() = 0;
-    virtual std::string getBrand() const = 0;
-    virtual int getStoc() const =0;
+     int getStoc() const;
+    double getPret() const;
+    std::string getBrand() const;
+    float getCantitate() const;
     virtual std::shared_ptr <Produs> clone() const = 0;
 
 };

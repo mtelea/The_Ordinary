@@ -42,25 +42,16 @@ double SPF::Reducere () {
     return this->pret;
 }
 
-double SPF::getPret() const {
-    return this->pret;
-}
 
 int SPF::getCod() const {
     return this->cod_produs;
 }
 
-int SPF::getStoc() const{
-    return this->stoc;
-}
 
 void SPF::set_new_pret(){
     this->pret = this->Reducere();
 }
 
-std::string SPF::getBrand() const {
-    return this->brand;
-}
 
 std::shared_ptr <Produs> SPF::clone() const {
     return std::make_shared <SPF>(*this);
