@@ -13,14 +13,15 @@ int main()
 {
     try{
         SPF s0("Bioderma","gras",0,0,20,30);
+        std::cout<<s0;
     }
 
     catch(EroareProdus &eroare){
         std::cout<<eroare.what()<<" ";
     }
 
-    catch(std::exception &e){
-        std::cout<<e.what()<<" "<<std::endl;
+    catch(std::exception &eroare){
+        std::cout<<eroare.what()<<" "<<std::endl;
     }
 
     SPF s1("Garnier","mixt",200,50,40,50);//constructor init cu parametri
@@ -36,7 +37,7 @@ int main()
     std::cout<<s3;
 
     CleansingGel g1("Bioderma","gras",200,62,19,0);
-    CleansingGel g2("Cerave","uscat",150,45,50,2);
+    CleansingGel g2("Cerave","uscat",150,45,0,2);
     CleansingGel g3("La Roche Possay","mixt",100,70,12,3);
     CleansingGel g4("Avene","oricare",120,80.5,32,1);
     CleansingGel g5("Neutrogena","mixt",130,25,10,0);
@@ -47,7 +48,7 @@ int main()
     std::cout<<m1;
     std::vector <std::shared_ptr <Produs>> produse;
     produse.push_back(std::make_shared<SPF>(s1));
-    produse.push_back(std::make_shared<SPF>(s2));
+   // produse.push_back(std::make_shared<SPF>(s2));
     produse.push_back(std::make_shared<SPF>(s3));
     produse.push_back(std::make_shared<SPF>(s4));
     produse.push_back(std::make_shared<SPF>(s5));
@@ -57,9 +58,15 @@ int main()
     produse.push_back(std::make_shared<CleansingGel>(g4));
     produse.push_back(std::make_shared<CleansingGel>(g5));
 
-    Market m2{produse,"Geek and Gorgeous","Bucuresti, Sector 3"};
+    try
+    { Market m2{produse,"Geek and Gorgeous","Bucuresti, Sector 3"};
     m2.pret_total();
-    std::cout<<m2;
+    m2.verifica_stoc("Cerave");
+    std::cout<<m2;}
+
+    catch (EroareProdus &eroare){
+        std::cout<<eroare.what()<<std::endl;
+    }
 
     Comanda cmd1{516255,produse,0,"16.11.2021"};
     std::vector <std::shared_ptr<Comanda>> IstoricComenzi;
@@ -67,6 +74,7 @@ int main()
     cmd1.total_comanda();
     Client c1{"Popescu",999,"Sibiu",IstoricComenzi};
     std::cout<<c1;
+
   return 0;
 }
 

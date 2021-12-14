@@ -50,6 +50,10 @@ int SPF::getCod() const {
     return this->cod_produs;
 }
 
+int SPF::getStoc() const{
+    return this->stoc;
+}
+
 void SPF::set_new_pret(){
     this->pret = this->Reducere();
 }

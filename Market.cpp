@@ -36,6 +36,12 @@ void Market::pret_total(){
     std::cout<<"Pretul total este :"<<pret<<" lei"<<std::endl;
 }
 
+void Market::verifica_stoc(std::string nume) {
+    for (const auto &prod : produse)
+        if (nume == prod->getBrand())
+            if (prod->getStoc()==0) throw EroareStoc();
+}
+
 std::ostream& operator<<(std::ostream& iesire,const Market& m){
     iesire<<"Magazinul "<<m.nume<<" se afla la adresa "<<m.adresa<<std::endl;
     return iesire;

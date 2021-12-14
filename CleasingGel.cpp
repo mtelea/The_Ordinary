@@ -33,6 +33,10 @@ double CleansingGel::Reducere (){
     return this->pret;
 }
 
+int CleansingGel::getStoc() const {
+    return this->stoc;
+}
+
 void CleansingGel::set_new_pret(){
     this->pret = this->Reducere();
 }

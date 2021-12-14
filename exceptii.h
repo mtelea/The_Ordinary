@@ -20,4 +20,9 @@ public:
     explicit EroareCantitate(float cantitate);
 };
 
+class EroareStoc : public EroareProdus {
+public:
+    explicit EroareStoc();
+};
+
 #endif //THE_ORDINARY_EXCEPTII_H

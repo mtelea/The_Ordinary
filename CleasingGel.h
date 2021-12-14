@@ -21,6 +21,7 @@ public:
    double Reducere() override;
    void set_new_pret() override;
    std::string getBrand() const;
+   int getStoc() const;
    std::shared_ptr <Produs> clone() const override;
 
 };

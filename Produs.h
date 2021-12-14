@@ -22,6 +22,7 @@ public:
     virtual double Reducere() = 0;
     virtual void set_new_pret() = 0;
     virtual std::string getBrand() const = 0;
+    virtual int getStoc() const =0;
     virtual std::shared_ptr <Produs> clone() const = 0;
 
 };

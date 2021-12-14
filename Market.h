@@ -2,7 +2,9 @@
 #define MAIN_CPP_MARKET_H
 
 #include<vector>
+#include <cstring>
 #include "Produs.h"
+#include "exceptii.h"
 
 class Market {
     std::vector <std::shared_ptr <Produs>> produse;
@@ -16,6 +18,7 @@ public:
     void setAdresa(const std::string &adresa);
     Market(const std::string &nume, const std::string &adresa);
     void pret_total();
+    void verifica_stoc(std::string nume);
     friend std::ostream& operator<<(std::ostream& iesire,const Market& m);
 };
 
