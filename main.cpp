@@ -5,13 +5,15 @@
 #include "Comanda.h"
 #include "Client.h"
 #include "exceptii.h"
+#include "Produs_Factory.h"
+#include "Produs_Builder.h"
 #include<memory>
 
 using namespace std::string_literals;
 
 int main()
 {
-    try{
+   /* try{
         SPF s0("Bioderma","gras",0,0,20,30);
         std::cout<<s0;
     }
@@ -73,7 +75,16 @@ int main()
     IstoricComenzi.push_back(std::make_shared<Comanda>(cmd1));
     cmd1.total_comanda();
     Client c1{"Popescu",999,"Sibiu",IstoricComenzi};
-    std::cout<<c1;
+    std::cout<<c1; */
+
+   SPF s = Produs_Factory::crema_copii();
+   std::cout<<s;
+
+   Produs_Builder p;
+   SPF s2 = p.brand("idk").pret(40).build();
+   std::cout<<s2;
+
+
 
   return 0;
 }

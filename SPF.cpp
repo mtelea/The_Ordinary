@@ -5,6 +5,7 @@ SPF::SPF(const std::string &brand, const std::string &tipTen, float cantitate, f
          int factorProtectie) : Produs(brand, tipTen, cantitate, pret, stoc),
                                 factor_protectie(factorProtectie) {}
 
+
 SPF::SPF(const SPF &s) : Produs(s){
     this->brand = s.brand;
     this->cod_produs=s.cod_produs;

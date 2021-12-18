@@ -37,6 +37,8 @@ float Produs::getCantitate() const {
 
 Produs::~Produs(){}
 
+Produs::Produs() {}
+
 
 
 

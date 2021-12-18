@@ -17,6 +17,7 @@ protected:
     static int cod_max;
 public:
     Produs(const std::string &brand, const std::string &tipTen, float cantitate, float pret,int stoc);
+    Produs();
     Produs &operator=(const Produs &p);
     virtual ~Produs();
     virtual double Reducere() = 0;
