@@ -37,7 +37,7 @@ SPF& SPF::operator=(const SPF &s){
     return *this;
 }
 
-double SPF::Reducere () {
+ double SPF::Reducere () {
     if (this->stoc<20)  return (this->pret - (this->pret*0.10));
     if(this->stoc<10) return (this->pret - (this->pret*0.25));
     return this->pret;
