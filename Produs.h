@@ -21,7 +21,6 @@ public:
     Produs &operator=(const Produs &p);
     virtual ~Produs();
     virtual double majorare() = 0;
-    virtual void set_new_pret() = 0;
      int getStoc() const;
     double getPret() const;
     std::string getBrand() const;

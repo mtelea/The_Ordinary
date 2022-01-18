@@ -49,12 +49,6 @@ int SPF::getCod() const {
     return this->cod_produs;
 }
 
-
-void SPF::set_new_pret(){
-    this->pret = this->majorare();
-}
-
-
 std::shared_ptr <Produs> SPF::clone() const {
     return std::make_shared <SPF>(*this);
 }

@@ -21,7 +21,6 @@ public:
     SPF& operator=(const SPF &s);
     double majorare() override;
     int getCod() const ;
-    void set_new_pret() override;
     std::shared_ptr <Produs> clone() const override;
 
 };

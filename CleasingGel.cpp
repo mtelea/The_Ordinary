@@ -28,11 +28,6 @@ double CleansingGel::majorare() {
 }
 
 
-void CleansingGel::set_new_pret(){
-    this->pret = this->majorare();
-}
-
-
 std::shared_ptr <Produs> CleansingGel::clone() const {
     return std::make_shared <CleansingGel>(*this);
 }
