@@ -2,14 +2,24 @@
 
 Comanda::Comanda(int idComanda, std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret, const std::string &dataComanda) :
 id_comanda(idComanda),prod_comandate(prod_comandate),pret(pret),data_comanda(dataComanda) {
-    pret =0;
 }
+
 
 void Comanda::total_comanda(){
     double total=0;
     for (unsigned i=0; i<prod_comandate.size();i++)
         total += prod_comandate.at(i)->getPret();
-    this->pret = total;
+    std::cout<<"Pretul total este: "<<total;
+}
+
+void Comanda::totalMajorareComanda() {
+    double total =0;
+    if(prod_comandate.size()<5)
+    {
+        for (unsigned i=0; i<prod_comandate.size();i++)
+            total += prod_comandate.at(i)->majorare();
+    }
+    std::cout<<"Pretul comenzii dupa majorare este; "<<total;
 }
 
 int Comanda::getID_comanda()const{

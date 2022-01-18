@@ -19,7 +19,7 @@ public:
     SPF() = default;
     friend std::ostream& operator<<(std::ostream& iesire,const SPF &s);
     SPF& operator=(const SPF &s);
-    double Reducere () override;
+    double majorare() override;
     int getCod() const ;
     void set_new_pret() override;
     std::shared_ptr <Produs> clone() const override;

@@ -23,7 +23,7 @@ int Produs::getStoc() const {
     return this->stoc;
 }
 
-double Produs::getPret() {
+double Produs::getPret() const {
     return this->pret;
 }
 

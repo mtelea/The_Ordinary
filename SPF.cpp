@@ -3,7 +3,9 @@
 
 SPF::SPF(const std::string &brand, const std::string &tipTen, float cantitate, float pret, int stoc,
          int factorProtectie) : Produs(brand, tipTen, cantitate, pret, stoc),
-                                factor_protectie(factorProtectie) {}
+                                factor_protectie(factorProtectie) {
+
+}
 
 
 SPF::SPF(const SPF &s) : Produs(s){
@@ -37,10 +39,9 @@ SPF& SPF::operator=(const SPF &s){
     return *this;
 }
 
- double SPF::Reducere () {
-    if (this->stoc<20)  return (this->pret - (this->pret*0.10));
-    if(this->stoc<10) return (this->pret - (this->pret*0.25));
-    return this->pret;
+ double SPF::majorare() {
+    if (this->factor_protectie>=30)  return (pret + (pret*0.10));
+    else if(factor_protectie >=50) return (pret + (pret*0.25));
 }
 
 
@@ -50,7 +51,7 @@ int SPF::getCod() const {
 
 
 void SPF::set_new_pret(){
-    this->pret = this->Reducere();
+    this->pret = this->majorare();
 }
 
 

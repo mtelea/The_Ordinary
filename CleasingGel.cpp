@@ -21,15 +21,15 @@ std::ostream& operator<<(std::ostream& iesire,const CleansingGel& g){
 }
 
 
-double CleansingGel::Reducere (){
-    if (this->stoc<20)  return (this->pret - (this->pret*0.10));
-    if(this->stoc<10) return (this->pret - (this->pret* 0.25));
+double CleansingGel::majorare() {
+    if (concentratie_HA>5)  return (pret + (this->pret*0.25));
+    if(this->stoc>10) return (this->pret + (this->pret* 0.4));
     return this->pret;
 }
 
 
 void CleansingGel::set_new_pret(){
-    this->pret = this->Reducere();
+    this->pret = this->majorare();
 }
 
 

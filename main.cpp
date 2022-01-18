@@ -11,6 +11,14 @@
 
 using namespace std::string_literals;
 
+template<class T>
+void isPositive(T val){
+    if(val<0)
+    {
+        throw std::runtime_error("Valoarea nu poate fi negativa!");
+    }
+}
+
 int main()
 {
     try{
@@ -34,7 +42,7 @@ int main()
     SPF s6(s4); //constructor de copiere
     std::cout<<s2; //operatorul <<
     std::cout<<s6;
-    std::cout<<"Pretul dupa reducere al SPF-ului "<<s3.getBrand()<<" este "<<s3.Reducere()<<std::endl;
+    std::cout<<"Pretul dupa majorare al SPF-ului "<<s3.getBrand()<<" este "<<s3.majorare()<<std::endl;
     s3.set_new_pret();
     std::cout<<s3;
 
@@ -45,20 +53,30 @@ int main()
     CleansingGel g5("Neutrogena","mixt",130,25,10,0);
     CleansingGel g6(g3);
     std::cout<<g6;
+    std::cout<<"Pretul dupa majorare al gelului este: "<<g4.majorare()<<std::endl;
 
     Market m1("The Ordinary", "Bucuresti, Sector 6");
     std::cout<<m1;
-    std::vector <std::shared_ptr <Produs>> produse;
-    produse.push_back(std::make_shared<SPF>(s1));
-   // produse.push_back(std::make_shared<SPF>(s2));
-    produse.push_back(std::make_shared<SPF>(s3));
-    produse.push_back(std::make_shared<SPF>(s4));
-    produse.push_back(std::make_shared<SPF>(s5));
-    produse.push_back(std::make_shared<CleansingGel>(g1));
+    std::vector <std::shared_ptr <Produs>> produse1;
+    produse1.push_back(std::make_shared<SPF>(s1));
+    produse1.push_back(std::make_shared<SPF>(s2));
+    produse1.push_back(std::make_shared<SPF>(s3));
+    produse1.push_back(std::make_shared<SPF>(s4));
+    produse1.push_back(std::make_shared<SPF>(s5));
+    produse1.push_back(std::make_shared<CleansingGel>(g1));
+    produse1.push_back(std::make_shared<CleansingGel>(g2));
+    produse1.push_back(std::make_shared<CleansingGel>(g3));
+    produse1.push_back(std::make_shared<CleansingGel>(g4));
+    produse1.push_back(std::make_shared<CleansingGel>(g5));
+
+
+    std::vector<std::shared_ptr<Produs>> produse;
+    produse.push_back(std::make_shared<SPF>(s2));
     produse.push_back(std::make_shared<CleansingGel>(g2));
-    produse.push_back(std::make_shared<CleansingGel>(g3));
-    produse.push_back(std::make_shared<CleansingGel>(g4));
-    produse.push_back(std::make_shared<CleansingGel>(g5));
+    Comanda comanda(1000,produse,0,"18 Ian 2022");
+    comanda.total_comanda();
+    comanda.totalMajorareComanda();
+
 
     try
     { Market m2{produse,"Geek and Gorgeous","Bucuresti, Sector 3"};

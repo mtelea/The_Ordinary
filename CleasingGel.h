@@ -16,7 +16,7 @@ public:
 
     CleansingGel(const CleansingGel &g);
     friend std::ostream& operator<<(std::ostream& iesire,const CleansingGel& g);
-   double Reducere() override;
+   double majorare() override;
    void set_new_pret() override;
    std::shared_ptr <Produs> clone() const override;
 
