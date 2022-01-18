@@ -2,6 +2,7 @@
 
 Comanda::Comanda(int idComanda, std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret, const std::string &dataComanda) :
 id_comanda(idComanda),prod_comandate(prod_comandate),pret(pret),data_comanda(dataComanda) {
+    isPositive(pret);
 }
 
 

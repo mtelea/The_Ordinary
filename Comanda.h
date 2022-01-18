@@ -4,6 +4,7 @@
 #include<vector>
 #include<iostream>
 #include "Produs.h"
+#include"functietemplate.h"
 
 class Comanda {
     int id_comanda;

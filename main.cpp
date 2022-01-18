@@ -11,13 +11,6 @@
 
 using namespace std::string_literals;
 
-template<class T>
-void isPositive(T val){
-    if(val<0)
-    {
-        throw std::runtime_error("Valoarea nu poate fi negativa!");
-    }
-}
 
 int main()
 {
@@ -43,7 +36,6 @@ int main()
     std::cout<<s2; //operatorul <<
     std::cout<<s6;
     std::cout<<"Pretul dupa majorare al SPF-ului "<<s3.getBrand()<<" este "<<s3.majorare()<<std::endl;
-    s3.set_new_pret();
     std::cout<<s3;
 
     CleansingGel g1("Bioderma","gras",200,62,19,0);
