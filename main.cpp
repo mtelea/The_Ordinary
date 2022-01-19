@@ -7,6 +7,7 @@
 #include "exceptii.h"
 #include "Produs_Factory.h"
 #include "Produs_Builder.h"
+#include "templates.h"
 #include<memory>
 
 using namespace std::string_literals;
@@ -62,16 +63,16 @@ int main()
     produse1.push_back(std::make_shared<CleansingGel>(g5));
 
 
-    std::vector<std::shared_ptr<Produs>> produse;
-    produse.push_back(std::make_shared<SPF>(s2));
-    produse.push_back(std::make_shared<CleansingGel>(g2));
-    Comanda comanda(1000,produse,0,"18 Ian 2022");
+    std::vector<std::shared_ptr<Produs>> produse2;
+    produse2.push_back(std::make_shared<SPF>(s2));
+    produse2.push_back(std::make_shared<CleansingGel>(g2));
+    Comanda comanda(1000,produse2,0,"18 Ian 2022");
     comanda.total_comanda();
     comanda.totalMajorareComanda();
 
 
     try
-    { Market m2{produse,"Geek and Gorgeous","Bucuresti, Sector 3"};
+    { Market m2{produse1,"Geek and Gorgeous","Bucuresti, Sector 3"};
     m2.pret_total();
     m2.verifica_stoc("Cerave");
     std::cout<<m2;}
@@ -80,12 +81,20 @@ int main()
         std::cout<<eroare.what()<<std::endl;
     }
 
-    Comanda cmd1{516255,produse,0,"16.11.2021"};
+    Comanda cmd1(516255,produse1,0,"16.11.2021");
     std::vector <std::shared_ptr<Comanda>> IstoricComenzi;
     IstoricComenzi.push_back(std::make_shared<Comanda>(cmd1));
     cmd1.total_comanda();
     Client c1{"Popescu",999,"Sibiu",IstoricComenzi};
     std::cout<<c1;
+    Comanda cmd2(516257,produse2,0,"19.01.2022");
+
+
+    clientTemplate<int> client1( "Ionescu",  "Sibiu", 300, IstoricComenzi);
+    clientTemplate<float> client2( "Georgescu",  "Bucuresti", 301.7, IstoricComenzi);
+
+    client1.search(300);
+    client2.search(301.7);
 
    SPF s = Produs_Factory::crema_copii();
    std::cout<<s;

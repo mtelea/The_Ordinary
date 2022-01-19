@@ -14,7 +14,6 @@ class Comanda {
 
 public:
     Comanda(int idComanda,std::vector<std::shared_ptr<Produs>> &prod_comandate,double pret,const std::string &dataComanda);
-    //const std::vector<Produs> &lista_comandate;
     void total_comanda();
     void totalMajorareComanda();
     int getID_comanda()const;
